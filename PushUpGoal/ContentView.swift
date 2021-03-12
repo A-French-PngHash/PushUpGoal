@@ -66,7 +66,7 @@ struct ContentView: View {
                         Text("+\(repsToAdd)")
                             .foregroundColor(.orange)
                     }
-                    Text("push up.")
+                    Text("push up")
                 }
                 .font(.title3)
 
