@@ -28,6 +28,7 @@ class GoalCalculator {
 
     func calculateNumberPushup() -> Int {
 
+        return 100
         let result = getDataFor(days: 5)
 
         if result?.count == 0 {
@@ -39,11 +40,10 @@ class GoalCalculator {
             let lastPushUpDate = lastDay!.day
             let calendar = Calendar.current
             let components = calendar.dateComponents([.day], from: lastPushUpDate!, to: calendar.startOfDay(for: Date()))
-            let theoreticalNewGoal = lastDay?.goal / (components.day! % 5)
+            //let theoreticalNewGoal = lastDay!.goal / (components.day! % 5)
 
 
         }
-        return 100
     }
 
     private func getDataFor(days : Int) -> [Day]?{
