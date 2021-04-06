@@ -7,7 +7,7 @@
 
 import CoreData
 
-struct PersistenceController {
+class PersistenceController {
     static let shared = PersistenceController()
 
     static var preview: PersistenceController = {
@@ -51,5 +51,35 @@ struct PersistenceController {
                 // Show some error here
             }
         }
+    }
+
+
+    /// Fetch all data in database.
+    func fetchAllData() -> [Day] {
+        let fetchRequest : NSFetchRequest<Day> = Day.fetchRequest()
+        return try! container.viewContext.fetch(fetchRequest)
+    }
+
+    /// Fetch and return the data for the past [days].
+    func getDataFor(days : Int) -> [Day]?{
+        let calendar = Calendar.current
+
+        func dateMinus(days : Int) -> Date {
+            let now = Date()
+            let daysAgo : Date = calendar.date(byAdding: DateComponents(day: -days), to: now)!
+            return daysAgo
+        }
+
+        let daysAgo = dateMinus(days: days)
+
+        let startDate = calendar.startOfDay(for: daysAgo)
+        let predicate = NSPredicate(format:"(date >= %@) AND (date < %@)", startDate as CVarArg, Date() as CVarArg)
+
+        let fetchRequest : NSFetchRequest<Day> = Day.fetchRequest()
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "day", ascending: true)]
+        let result = try? container.viewContext.fetch(fetchRequest)
+        return result
+
     }
 }

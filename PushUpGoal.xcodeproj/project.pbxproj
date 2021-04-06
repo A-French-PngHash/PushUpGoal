@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5B07464125F7ECE800277E7D /* PushUpGoalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07464025F7ECE800277E7D /* PushUpGoalApp.swift */; };
-		5B07464325F7ECE800277E7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07464225F7ECE800277E7D /* ContentView.swift */; };
 		5B07464525F7ECEB00277E7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B07464425F7ECEB00277E7D /* Assets.xcassets */; };
 		5B07464825F7ECEB00277E7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B07464725F7ECEB00277E7D /* Preview Assets.xcassets */; };
 		5B07464A25F7ECEB00277E7D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07464925F7ECEB00277E7D /* Persistence.swift */; };
@@ -17,6 +16,11 @@
 		5B07466325F7ECEC00277E7D /* PushUpGoalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07466225F7ECEC00277E7D /* PushUpGoalUITests.swift */; };
 		5B07467C25F7FBC000277E7D /* AlertAddedPushUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B07467B25F7FBC000277E7D /* AlertAddedPushUpView.swift */; };
 		5B33666225F8F81100C5E713 /* GoalCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B33666125F8F81100C5E713 /* GoalCalculator.swift */; };
+		5B7AFB182603D4750082865E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7AFB172603D4750082865E /* MainView.swift */; };
+		5BA1C1A6261CAB3E0047577D /* StreakService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1C1A5261CAB3E0047577D /* StreakService.swift */; };
+		5BA1C1AB261CAB510047577D /* StreakModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1C1AA261CAB510047577D /* StreakModel.swift */; };
+		5BA1C1B3261CB7D20047577D /* fakePersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1C1B2261CB7D20047577D /* fakePersistenceController.swift */; };
+		5BB21C962602C1E200ED9DAE /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB21C952602C1E200ED9DAE /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +43,6 @@
 /* Begin PBXFileReference section */
 		5B07463D25F7ECE800277E7D /* PushUpGoal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushUpGoal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B07464025F7ECE800277E7D /* PushUpGoalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushUpGoalApp.swift; sourceTree = "<group>"; };
-		5B07464225F7ECE800277E7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5B07464425F7ECEB00277E7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B07464725F7ECEB00277E7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5B07464925F7ECEB00277E7D /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -53,6 +56,11 @@
 		5B07466425F7ECEC00277E7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B07467B25F7FBC000277E7D /* AlertAddedPushUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAddedPushUpView.swift; sourceTree = "<group>"; };
 		5B33666125F8F81100C5E713 /* GoalCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCalculator.swift; sourceTree = "<group>"; };
+		5B7AFB172603D4750082865E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5BA1C1A5261CAB3E0047577D /* StreakService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakService.swift; sourceTree = "<group>"; };
+		5BA1C1AA261CAB510047577D /* StreakModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakModel.swift; sourceTree = "<group>"; };
+		5BA1C1B2261CB7D20047577D /* fakePersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fakePersistenceController.swift; sourceTree = "<group>"; };
+		5BB21C952602C1E200ED9DAE /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +111,13 @@
 		5B07463F25F7ECE800277E7D /* PushUpGoal */ = {
 			isa = PBXGroup;
 			children = (
-				5B07464025F7ECE800277E7D /* PushUpGoalApp.swift */,
-				5B07464225F7ECE800277E7D /* ContentView.swift */,
+				5BB21C942602C1C200ED9DAE /* ViewModel */,
+				5BB21C932602C1BE00ED9DAE /* View */,
+				5BB21C922602C1B900ED9DAE /* Model */,
 				5B07464425F7ECEB00277E7D /* Assets.xcassets */,
-				5B07464925F7ECEB00277E7D /* Persistence.swift */,
 				5B07464E25F7ECEB00277E7D /* Info.plist */,
 				5B07464B25F7ECEB00277E7D /* PushUpGoal.xcdatamodeld */,
 				5B07464625F7ECEB00277E7D /* Preview Content */,
-				5B07467B25F7FBC000277E7D /* AlertAddedPushUpView.swift */,
-				5B33666125F8F81100C5E713 /* GoalCalculator.swift */,
 			);
 			path = PushUpGoal;
 			sourceTree = "<group>";
@@ -129,6 +135,7 @@
 			children = (
 				5B07465725F7ECEB00277E7D /* PushUpGoalTests.swift */,
 				5B07465925F7ECEB00277E7D /* Info.plist */,
+				5BA1C1B2261CB7D20047577D /* fakePersistenceController.swift */,
 			);
 			path = PushUpGoalTests;
 			sourceTree = "<group>";
@@ -140,6 +147,43 @@
 				5B07466425F7ECEC00277E7D /* Info.plist */,
 			);
 			path = PushUpGoalUITests;
+			sourceTree = "<group>";
+		};
+		5BA1C1A4261CAB300047577D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5BA1C1A5261CAB3E0047577D /* StreakService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5BB21C922602C1B900ED9DAE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BA1C1A4261CAB300047577D /* Services */,
+				5B07464925F7ECEB00277E7D /* Persistence.swift */,
+				5B33666125F8F81100C5E713 /* GoalCalculator.swift */,
+				5BA1C1AA261CAB510047577D /* StreakModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5BB21C932602C1BE00ED9DAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B07467B25F7FBC000277E7D /* AlertAddedPushUpView.swift */,
+				5B07464025F7ECE800277E7D /* PushUpGoalApp.swift */,
+				5B7AFB172603D4750082865E /* MainView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5BB21C942602C1C200ED9DAE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5BB21C952602C1E200ED9DAE /* MainViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,8 +316,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B33666225F8F81100C5E713 /* GoalCalculator.swift in Sources */,
+				5BA1C1A6261CAB3E0047577D /* StreakService.swift in Sources */,
+				5B7AFB182603D4750082865E /* MainView.swift in Sources */,
 				5B07464A25F7ECEB00277E7D /* Persistence.swift in Sources */,
-				5B07464325F7ECE800277E7D /* ContentView.swift in Sources */,
+				5BA1C1AB261CAB510047577D /* StreakModel.swift in Sources */,
+				5BB21C962602C1E200ED9DAE /* MainViewModel.swift in Sources */,
 				5B07467C25F7FBC000277E7D /* AlertAddedPushUpView.swift in Sources */,
 				5B07464125F7ECE800277E7D /* PushUpGoalApp.swift in Sources */,
 				5B07464D25F7ECEB00277E7D /* PushUpGoal.xcdatamodeld in Sources */,
@@ -284,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BA1C1B3261CB7D20047577D /* fakePersistenceController.swift in Sources */,
 				5B07465825F7ECEB00277E7D /* PushUpGoalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

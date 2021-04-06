@@ -8,13 +8,12 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct ContentView<Model: ContentViewModel>: View {
     @Environment(\.managedObjectContext) var managedObjectContext
+    @EnvironmentObject var model: Model
+
     let goalCalculator = GoalCalculator.shared
 
-    @State private var today : Day?
-
-    @State var repsToAdd = 20 // Default value.
     @State var editingValueRepsToAdd : Bool = false
     @State var currentNumber : Int64 = 0
 
@@ -54,16 +53,16 @@ struct ContentView: View {
                     Text("Add")
                     if editingValueRepsToAdd {
                         TextField("title", text: Binding(get: {
-                            String(repsToAdd)
+                            String(model.repsToAdd)
                         }, set: { (value) in
                             if let v = Int(value) {
-                                repsToAdd = v
+                                model.repsToAdd = v
                             }
                         }))
                         .frame(width: 50, height: 20, alignment: .center)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     } else {
-                        Text("+\(repsToAdd)")
+                        Text("+\(model.repsToAdd)")
                             .foregroundColor(.orange)
                     }
                     Text("push up.")
@@ -90,6 +89,8 @@ struct ContentView: View {
                 Spacer()
 
             }
+
+            
             Button(action: {
                 if let timer = timerAddedPushUpAlert {
                     if timer.isValid {
@@ -101,7 +102,7 @@ struct ContentView: View {
                 }
                 withAnimation {
                     alertShown = true
-                    add(reps: repsToAdd)
+                    add(reps: model.repsToAdd)
                 }
                 timerAddedPushUpAlert = Timer.scheduledTimer(withTimeInterval: TimeInterval(displayAddedPushUpAlertHiddenFor), repeats: false, block: { (_) in
                     withAnimation {
@@ -136,36 +137,16 @@ struct ContentView: View {
                         if let timer = self.timerAddedPushUpAlert {
                             timer.invalidate()
                         }
-                    }, added: $repsAddedSinceAlertShown)
+                    }, added: repsAddedSinceAlertShown)
 
                 }
             }
         }
-        .onAppear(perform: {
-
-            let fetchTodayDataRequest : NSFetchRequest<Day> = Day.fetchRequest()
-
-            fetchTodayDataRequest.sortDescriptors = [NSSortDescriptor(key: "day", ascending: true)]
-            fetchTodayDataRequest.predicate = NSPredicate(format: "day == %@", Date().dateNoTime() as CVarArg)
-
-            let result = try? managedObjectContext.fetch(fetchTodayDataRequest)
-
-            if result == nil || result!.count == 0 { // No entity for today yet.
-                let newEntity = Day(context: managedObjectContext)
-                newEntity.day = Date().dateNoTime()
-                newEntity.numberPushUp = 0
-                PersistenceController.shared.save()
-                today = newEntity
-                return
-            }
-            today = result![0]
-            currentNumber = today!.numberPushUp
-        })
     }
 
     func add(reps : Int) {
-        today!.numberPushUp += Int64(reps)
-        currentNumber = today!.numberPushUp
+        model.today!.numberPushUp += Int64(reps)
+        currentNumber = model.today!.numberPushUp
         if reps > 0 { // WHen undo button process the number is negative. We odn't want this value set to 0 just yet as the user would be able to see the reset through the hiding animation.
             repsAddedSinceAlertShown += reps
         }
@@ -179,6 +160,7 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            .environmentObject(ContentViewModel(managedObjectContext: persistenceController.container.viewContext))
     }
 }
 
