@@ -72,7 +72,7 @@ struct MainView<Model: MainViewModel>: View {
                     .font(.system(size: 80))
             })
             Spacer()
-            if model.streak.count >= 0 {
+            if model.streak.count >= 3 {
                 HStack {
                     Spacer()
                     VStack {
